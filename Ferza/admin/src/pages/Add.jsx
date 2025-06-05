@@ -17,7 +17,7 @@ const Add = ({ token }) => {
   const [subCategory, setSubCategory] = useState("Topwear");
   const [bestseller, setBestseller] = useState(false);
   const [sizes, setSizes] = useState([]);
-
+ console.log(bestseller)
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     try {
@@ -28,7 +28,7 @@ const Add = ({ token }) => {
       formData.append("price", price);
       formData.append("category", category);
       formData.append("subCategory", subCategory);
-      formData.append("bestseller", bestseller);
+      formData.append("bestSeller", bestseller);
       formData.append("sizes", JSON.stringify(sizes));
 
       image1 && formData.append("image1", image1);
@@ -58,6 +58,7 @@ const Add = ({ token }) => {
       console.log(error);
       toast.error(error.message);
     }
+    console.log(bestseller)
   };
 
   return (
@@ -279,6 +280,7 @@ const Add = ({ token }) => {
       <div className="flex gap-2 mt-2">
         <input
           onChange={() => setBestseller((p) => !p)}
+          
           checked={bestseller}
           type="checkbox"
           id="bestseller"
@@ -289,7 +291,7 @@ const Add = ({ token }) => {
       </div>
 
       <button
-        className="w-28 py-3 mt-4 bg-black bg-black text-white"
+        className="w-28 py-3 mt-4  bg-black text-white"
         type="submit"
       >
         Add
